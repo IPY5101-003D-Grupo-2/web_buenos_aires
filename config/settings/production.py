@@ -56,7 +56,7 @@ SECURE_CONTENT_TYPE_NOSNIFF = env.bool(
 
 # STATIC
 # ------------------------
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "web_buenos_aires.my_project.storage.WhiteNoiseStaticFilesStorage"
 # MEDIA
 # ------------------------------------------------------------------------------
 
