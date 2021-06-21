@@ -1,0 +1,474 @@
+{% extends './base.html' %}
+{% load static %}
+{% load custom_tags %}
+{% block titulo_pagina %} Productos {% endblock titulo_pagina %}
+{% block titulo_modulo %} Productos {% endblock titulo_modulo %}
+{% block item_breadcrumb %} Productos {% endblock item_breadcrumb %}
+{% block content %}
+<!-- tap on top starts-->
+ 
+          <!-- Container-fluid starts-->
+          <div class="container-fluid product-wrapper">
+            <div class="product-grid">
+              <div class="feature-products">
+                <div class="row">
+                  <div class="col-md-6 products-total">
+                    <div class="square-product-setting d-inline-block"><a class="icon-grid grid-layout-view" href="#" data-original-title="" title=""><i data-feather="grid"></i></a></div>
+                    <div class="square-product-setting d-inline-block"><a class="icon-grid m-0 list-layout-view" href="#" data-original-title="" title=""><i data-feather="list"></i></a></div><span class="d-none-productlist filter-toggle">
+                          Filters<span class="ms-2"><i class="toggle-data" data-feather="chevron-down"></i></span></span>
+                    <div class="grid-options d-inline-block">
+                      <ul>
+                        <li><a class="product-2-layout-view" href="#" data-original-title="" title=""><span class="line-grid line-grid-1 bg-primary"></span><span class="line-grid line-grid-2 bg-primary"></span></a></li>
+                        <li><a class="product-3-layout-view" href="#" data-original-title="" title=""><span class="line-grid line-grid-3 bg-primary"></span><span class="line-grid line-grid-4 bg-primary"></span><span class="line-grid line-grid-5 bg-primary"></span></a></li>
+                        <li><a class="product-4-layout-view" href="#" data-original-title="" title=""><span class="line-grid line-grid-6 bg-primary"></span><span class="line-grid line-grid-7 bg-primary"></span><span class="line-grid line-grid-8 bg-primary"></span><span class="line-grid line-grid-9 bg-primary"></span></a></li>
+                        <li><a class="product-6-layout-view" href="#" data-original-title="" title=""><span class="line-grid line-grid-10 bg-primary"></span><span class="line-grid line-grid-11 bg-primary"></span><span class="line-grid line-grid-12 bg-primary"></span><span class="line-grid line-grid-13 bg-primary"></span><span class="line-grid line-grid-14 bg-primary"></span><span class="line-grid line-grid-15 bg-primary"></span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-md-6 text-end"><span class="f-w-600 m-r-5">Showing Products 1 - 24 Of 200 Results</span>
+                    <div class="select2-drpdwn-product select-options d-inline-block">
+                      <select class="form-control btn-square" name="select">
+                        <option value="opt1">Featured</option>
+                        <option value="opt2">Lowest Prices</option>
+                        <option value="opt3">Highest Prices</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="product-sidebar">
+                      <div class="filter-section">
+                        <div class="card">
+                          <div class="card-header">
+                            <h6 class="mb-0 f-w-600">Filters<span class="pull-right"><i class="fa fa-chevron-down toggle-data"></i></span></h6>
+                          </div>
+                          <div class="left-filter">
+                            <div class="card-body filter-cards-view animate-chk">
+                              <div class="product-filter">
+                                <h6 class="f-w-600">Category</h6>
+                                <div class="checkbox-animated mt-0">
+                                  <label class="d-block" for="edo-ani5">
+                                    <input class="radio_animated" id="edo-ani5" type="radio" data-original-title="" title="">Man Shirt
+                                  </label>
+                                  <label class="d-block" for="edo-ani6">
+                                    <input class="radio_animated" id="edo-ani6" type="radio" data-original-title="" title="">Man Jeans
+                                  </label>
+                                  <label class="d-block" for="edo-ani7">
+                                    <input class="radio_animated" id="edo-ani7" type="radio" data-original-title="" title="">Woman Top
+                                  </label>
+                                  <label class="d-block" for="edo-ani8">
+                                    <input class="radio_animated" id="edo-ani8" type="radio" data-original-title="" title="">Woman Jeans
+                                  </label>
+                                  <label class="d-block" for="edo-ani9">
+                                    <input class="radio_animated" id="edo-ani9" type="radio" data-original-title="" title="">Man T-shirt
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="product-filter">
+                                <h6 class="f-w-600">Brand</h6>
+                                <div class="checkbox-animated mt-0">
+                                  <label class="d-block" for="chk-ani">
+                                    <input class="checkbox_animated" id="chk-ani" type="checkbox" data-original-title="" title=""> Levi's
+                                  </label>
+                                  <label class="d-block" for="chk-ani1">
+                                    <input class="checkbox_animated" id="chk-ani1" type="checkbox" data-original-title="" title="">Diesel
+                                  </label>
+                                  <label class="d-block" for="chk-ani2">
+                                    <input class="checkbox_animated" id="chk-ani2" type="checkbox" data-original-title="" title="">Lee
+                                  </label>
+                                  <label class="d-block" for="chk-ani3">
+                                    <input class="checkbox_animated" id="chk-ani3" type="checkbox" data-original-title="" title="">Hudson
+                                  </label>
+                                  <label class="d-block" for="chk-ani4">
+                                    <input class="checkbox_animated" id="chk-ani4" type="checkbox" data-original-title="" title="">Denizen
+                                  </label>
+                                  <label class="d-block" for="chk-ani5">
+                                    <input class="checkbox_animated" id="chk-ani5" type="checkbox" data-original-title="" title="">Spykar
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="product-filter slider-product">
+                                <h6 class="f-w-600">Colors</h6>
+                                <div class="color-selector">
+                                  <ul>
+                                    <li class="white"></li>
+                                    <li class="gray"></li>
+                                    <li class="black"></li>
+                                    <li class="orange"></li>
+                                    <li class="green"></li>
+                                    <li class="pink"></li>
+                                    <li class="yellow"></li>
+                                    <li class="blue"></li>
+                                    <li class="red"></li>
+                                  </ul>
+                                </div>
+                              </div>
+                              <div class="product-filter text-center"><img class="img-fluid banner-product" src="../assets/images/ecommerce/banner.jpg" alt="" data-original-title="" title=""></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-9 col-sm-12">
+                    <form>
+                      <div class="form-group m-0">
+                        <input class="form-control" type="search" placeholder="Search.." data-original-title="" title=""><i class="fa fa-search"></i>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="product-wrapper-grid">
+                <div class="row">
+                  {% for producto in productos %}
+                  <div class="col-xl-3 col-sm-6 xl-4">
+                    <div class="card">
+                      <div class="product-box">
+                        <div class="product-img">
+                            <div class="ribbon ribbon-danger">{{ producto.TIPO }}</div>
+                            <img class="img-fluid" src="{{ producto.IMAGENDELPRODUCTO }}" alt="">
+                          <div class="product-hover">
+                            <ul>
+                              <li>
+                                <button class="btn" type="button"><i class="icon-shopping-cart"></i></button>
+                              </li>
+                              <li>
+                                <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"><i class="icon-eye"></i></button>
+                              </li>
+                              
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
+                          <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <div class="product-box row">
+                                  <div class="product-img col-lg-6">
+                                  <div class="ribbon ribbon-danger">{{ producto.TIPO }}</div>
+                                  
+                                  <img class="img-fluid" src="{{ producto.IMAGENDELPRODUCTO }}" alt=""></div>
+                                  <div class="product-details col-lg-6 text-start ">
+                                    <div class="">{{ producto.TIPO }}</div>
+
+                                    <h4>{{ producto.NOMBRE }}</h4>
+                                    <h5>{{ producto.SKU }}</h5>
+                                    <div class="product-price">${{ producto.PRECIO }}
+                                    </div>
+                                    
+
+
+<div class="col-sm-12">
+                  <ul class="nav nav-tabs border-tab mb-0" id="top-tab" role="tablist">
+                    <li class="nav-item"><a class="nav-link active" id="top-home-tab" data-bs-toggle="tab" href="#top-home" role="tab" aria-controls="top-home" aria-selected="true" data-bs-original-title="" title="">Características</a>
+                      <div class="material-border"></div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" id="profile-top-tab" data-bs-toggle="tab" href="#top-profile" role="tab" aria-controls="top-profile" aria-selected="false" data-bs-original-title="" title="">Detalle técnico</a>
+                      <div class="material-border"></div>
+                    </li>
+                    {% comment %} <li class="nav-item"><a class="nav-link" id="contact-top-tab" data-bs-toggle="tab" href="#top-contact" role="tab" aria-controls="top-contact" aria-selected="false" data-bs-original-title="" title="">Details</a>
+                      <div class="material-border"></div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" id="brand-top-tab" data-bs-toggle="tab" href="#top-brand" role="tab" aria-controls="top-brand" aria-selected="false" data-bs-original-title="" title="">Brand</a>
+                      <div class="material-border"></div>
+                    </li> {% endcomment %}
+                  </ul>
+                  <div class="tab-content" id="top-tabContent">
+                    <div class="tab-pane fade active show" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
+                      <p class="mb-0 m-t-20">{{ producto.CARACTERISTICAS }}</p>
+                    </div>
+                    <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
+                      <p class="mb-0 m-t-20"><strong>Modelo:</strong> {{ producto.MODELO }}</p>
+                      <p class="mb-0 m-t-20"><strong>Modo de operación:</strong> {{ producto.MODOOPERACION }}</p>
+                      <p class="mb-0 m-t-20"><strong>Alimentación eléctrica:</strong> {{ producto.ALIMENTACIONELECTRICA }}</p>
+                      <p class="mb-0 m-t-20"><strong>Consumo eléctrico:</strong> {{ producto.CONSUMOELECTRICO }}</p>
+                      <p class="mb-0 m-t-20"><strong>Capacidad nominal:</strong> {{ producto.CAPACIDADNOMINAL }}</p>
+                      <p class="mb-0 m-t-20"><strong>Caudal de aire:</strong> {{ producto.CAUDALDEAIRE }}</p>
+                      <p class="mb-0 m-t-20"><strong>Nivel de ruido:</strong> {{ producto.NIVELDERUIDO }}</p>
+                      <p class="mb-0 m-t-20"><strong>Dimensiones:</strong> {{ producto.DIMENSIONES }}</p>
+                      <p class="mb-0 m-t-20"><strong>Peso neto:</strong> {{ producto.PESONETO }}</p>
+                      <p class="mb-0 m-t-20"><strong>Modelo kit cañerias:</strong> {{ producto.MODELOKITCAÑERIAS }}</p>
+                      <p class="mb-0 m-t-20"><strong>Conexión de cañerias:</strong> {{ producto.CONEXIONDECAÑERIAS }}</p>
+                      <p class="mb-0 m-t-20"><strong>Ficha del producto:</strong> {{ producto.FICHADEPRODUCTO }}</p>
+
+                    </div>
+                    {% comment %} <div class="tab-pane fade" id="top-contact" role="tabpanel" aria-labelledby="contact-top-tab">
+                      <p class="mb-0 m-t-20">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                    </div>
+                    <div class="tab-pane fade" id="top-brand" role="tabpanel" aria-labelledby="brand-top-tab">
+                      <p class="mb-0 m-t-20">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                    </div> {% endcomment %}
+                  </div>
+                </div>
+
+
+
+
+                                    <div class="product-qnty" style="margin-top:10px">
+                                      <h6 class="f-w-600">Cantidad</h6>
+                                      <p>Stock: {{ producto.CANTIDADINVENTARIO }}</p>
+                                      <fieldset>
+                                        <div class="input-group">
+                                          <input class="touchspin text-center" required type="number" value="1" min="1" max="{{producto.CANTIDADINVENTARIO}}">
+                                        </div>
+                                      </fieldset>
+                                      <div class="addcart-btn">
+                                        <button class="btn btn-primary" type="subnit">Agregar al carrito</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="product-details">
+                          <div class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                          <h4>{{ producto.NOMBRE }}</h4>
+                          <p>{{ producto.SKU }}</p>
+                          <div class="product-price">${{ producto.PRECIO }} 
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                  {% comment %} <div class="col-xl-3 col-sm-6 xl-4">
+                    <div class="card">
+                      <div class="product-box">
+                        <div class="product-img">
+                          <div class="ribbon ribbon-danger">Sale</div><img class="img-fluid" src="{% static '/assets/images/ecommerce/01.jpg' %}" alt="">
+                          <div class="product-hover">
+                            <ul>
+                              <li>
+                                <button class="btn" type="button"><i class="icon-shopping-cart"></i></button>
+                              </li>
+                              <li>
+                                <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter1"><i class="icon-eye"></i></button>
+                              </li>
+                              
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter1" aria-hidden="true">
+                          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <div class="product-box row">
+                                  <div class="product-img col-lg-6"><img class="img-fluid" src="../assets/images/ecommerce/02.jpg" alt=""></div>
+                                  <div class="product-details col-lg-6 text-start">
+                                    <h4>Woman T-shirt</h4>
+                                    <div class="product-price">$26.00
+                                      <del>$350.00    </del>
+                                    </div>
+                                    <div class="product-view">
+                                      <h6 class="f-w-600">Product Details</h6>
+                                      <p class="mb-0">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo.</p>
+                                    </div>
+                                    <div class="product-size">
+                                      <ul>
+                                        <li> 
+                                          <button class="btn btn-outline-light" type="button">M</button>
+                                        </li>
+                                        <li> 
+                                          <button class="btn btn-outline-light" type="button">L</button>
+                                        </li>
+                                        <li> 
+                                          <button class="btn btn-outline-light" type="button">Xl</button>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div class="product-qnty">
+                                      <h6 class="f-w-600">Quantity</h6>
+                                      <fieldset>
+                                        <div class="input-group">
+                                          <input class="touchspin text-center" type="text" value="5">
+                                        </div>
+                                      </fieldset>
+                                      <div class="addcart-btn">
+                                        <button class="btn btn-primary" type="button">Add to Cart</button>
+                                        <button class="btn btn-primary" type="button">View Details</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="product-details">
+                          <div class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                          <h4>Woman T-shirt</h4>
+                          <p>Simply dummy text of the printing.</p>
+                          <div class="product-price">$26.00 
+                            <del>$350.00    </del>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xl-3 col-sm-6 xl-4">
+                    <div class="card">
+                      <div class="product-box">
+                        <div class="product-img"><img class="img-fluid" src="{% static '/assets/images/ecommerce/01.jpg' %}" alt="">
+                          <div class="product-hover">
+                            <ul>
+                              <li>
+                                <button class="btn" type="button"><i class="icon-shopping-cart"></i></button>
+                              </li>
+                              <li>
+                                <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter2"><i class="icon-eye"></i></button>
+                              </li>
+                              
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter2" aria-hidden="true">
+                          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <div class="product-box row">
+                                  <div class="product-img col-lg-6"><img class="img-fluid" src="../assets/images/ecommerce/03.jpg" alt=""></div>
+                                  <div class="product-details col-lg-6 text-start">
+                                    <h4>Woman T-shirt</h4>
+                                    <div class="product-price">$26.00
+                                      <del>$350.00    </del>
+                                    </div>
+                                    <div class="product-view">
+                                      <h6 class="f-w-600">Product Details</h6>
+                                      <p class="mb-0">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo.</p>
+                                    </div>
+                                    <div class="product-size">
+                                      <ul>
+                                        <li> 
+                                          <button class="btn btn-outline-light" type="button">M</button>
+                                        </li>
+                                        <li> 
+                                          <button class="btn btn-outline-light" type="button">L</button>
+                                        </li>
+                                        <li> 
+                                          <button class="btn btn-outline-light" type="button">Xl</button>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div class="product-qnty">
+                                      <h6 class="f-w-600">Quantity</h6>
+                                      <fieldset>
+                                        <div class="input-group">
+                                          <input class="touchspin text-center" type="text" value="5">
+                                        </div>
+                                      </fieldset>
+                                      <div class="addcart-btn">
+                                        <button class="btn btn-primary" type="button">Add to Cart</button>
+                                        <button class="btn btn-primary" type="button">View Details</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="product-details">
+                          <div class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                          <h4>Woman T-shirt</h4>
+                          <p>Simply dummy text of the printing.</p>
+                          <div class="product-price"> 200$
+                            <del>$350.00    </del>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xl-3 col-sm-6 xl-4">
+                    <div class="card">
+                      <div class="product-box">
+                        <div class="product-img">
+                          <div class="ribbon ribbon-success ribbon-right">50%</div><img class="img-fluid" src="{% static '/assets/images/ecommerce/01.jpg' %}" alt="">
+                          <div class="product-hover">
+                            <ul>
+                              <li>
+                                <button class="btn" type="button"><i class="icon-shopping-cart"></i></button>
+                              </li>
+                              <li>
+                                <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter3"><i class="icon-eye"></i></button>
+                              </li>
+                              
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter3" aria-hidden="true">
+                          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <div class="product-box row">
+                                  <div class="product-img col-lg-6"><img class="img-fluid" src="../assets/images/ecommerce/04.jpg" alt=""></div>
+                                  <div class="product-details col-lg-6 text-start">
+                                    <h4>Woman T-shirt</h4>
+                                    <div class="product-price">$26.00
+                                      <del>$350.00    </del>
+                                    </div>
+                                    <div class="product-view">
+                                      <h6 class="f-w-600">Product Details</h6>
+                                      <p class="mb-0">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo.</p>
+                                    </div>
+                                    <div class="product-size">
+                                      <ul>
+                                        <li> 
+                                          <button class="btn btn-outline-light" type="button">M</button>
+                                        </li>
+                                        <li> 
+                                          <button class="btn btn-outline-light" type="button">L</button>
+                                        </li>
+                                        <li> 
+                                          <button class="btn btn-outline-light" type="button">Xl</button>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div class="product-qnty">
+                                      <h6 class="f-w-600">Quantity</h6>
+                                      <fieldset>
+                                        <div class="input-group">
+                                          <input class="touchspin text-center" type="text" value="5">
+                                        </div>
+                                      </fieldset>
+                                      <div class="addcart-btn">
+                                        <button class="btn btn-primary" type="button">Add to Cart</button>
+                                        <button class="btn btn-primary" type="button">View Details</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="product-details">
+                          <div class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                          <h4>Man's Suit</h4>
+                          <p>Simply dummy text of the printing.</p>
+                          <div class="product-price">200$
+                            <del>$350.00    </del>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div> {% endcomment %}
+
+                </div>
+              </div>
+            </div>
+          </div>
+        
+{% endblock content %}
+{% block scripts %}
+<script src="{% static '/assets/js/product-tab.js' %}"></script>
+
+
+{% endblock scripts %}

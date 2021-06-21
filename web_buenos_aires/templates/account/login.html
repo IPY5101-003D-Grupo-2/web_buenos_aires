@@ -1,0 +1,25 @@
+{% extends './base_auth.html' %}
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+{% load crispy_forms_tags %}
+
+{% block titulo_pagina %}Login {% endblock titulo_pagina %}
+
+{% block content %}
+<h4>Entra con tu cuenta</h4>
+<p>Ingresa tus credenciales</p>
+
+<form class="login" method="POST" action="{% url 'account_login' %}">
+  {% csrf_token %}
+  {{ form|crispy }}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <a class="button secondaryAction" href="{% url 'account_reset_password' %}">¿Olvidaste tu contraseña?</a>
+  <button class="primaryAction btn btn-primary" type="submit">Entra</button>
+</form>
+
+<p class="mt-4 mb-0 text-center">¿No tienes una cuenta?<a class="ms-2" href="{{ signup_url }}">Regístrate</a></p>
+
+{% endblock content %}

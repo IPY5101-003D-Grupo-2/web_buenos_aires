@@ -1,0 +1,27 @@
+{% extends '../gestion/base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block titulo_pagina %} Cerrar sesión {% endblock titulo_pagina %}
+{% block titulo_modulo %} Cerrar sesión {% endblock titulo_modulo %}
+{% block item_breadcrumb %} Cerrar sesión {% endblock item_breadcrumb %}
+
+{% block content %}
+<div class="row starter-main">
+    <div class="text-center">
+
+  <h1>{% trans "Sign Out" %}</h1>
+
+  <p>{% trans 'Are you sure you want to sign out?' %}</p>
+
+  <form method="post" action="{% url 'account_logout' %}">
+    {% csrf_token %}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+    {% endif %}
+    <button class="btn btn-danger" type="submit">{% trans 'Sign Out' %}</button>
+  </form>
+
+  </div>
+</div>
+{% endblock content %}

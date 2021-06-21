@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=web_buenos_aires
+POSTGRES_USER=qofPdJNTZkeeXINrLjGeShkeDBgEtAqE
+POSTGRES_PASSWORD=51TWVWeJj1mGo2ferPILnjuFN81VrogroOEjoSP7d1Z66ZoSi42W6zMlktsSmixf
