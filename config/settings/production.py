@@ -56,7 +56,7 @@ SECURE_CONTENT_TYPE_NOSNIFF = env.bool(
 
 # STATIC
 # ------------------------
-STATICFILES_STORAGE = "web_buenos_aires.storage.WhiteNoiseStaticFilesStorage"
+STATICFILES_STORAGE = "config.storage.WhiteNoiseStaticFilesStorage"
 # MEDIA
 # ------------------------------------------------------------------------------
 
