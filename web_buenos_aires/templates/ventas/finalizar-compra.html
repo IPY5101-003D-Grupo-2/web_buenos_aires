@@ -20,13 +20,14 @@
                           </div>
                         </div>
                         <ul class="qty">
-                          <li>Pink Slim Shirt × 1 <span>$25.10</span></li>
-                          <li>SLim Fit Jeans × 1 <span>$555.00</span></li>
+                          {% for producto in carrito %}
+                          <li>{{ producto.SKU }} {{ producto.NOMBRE|truncatechars:35 }} × {{ producto.CANTIDADCARRITO }} <span>${{ producto.PRECIOCARRITO }}</span></li>
+                          {% endfor %}
                         </ul>
                         <ul class="sub-total total">
-                          <li>Total <span class="count">$620.00</span></li>
+                          <li>Total <span class="count">${{ total_carrito }}</span></li>
                         </ul>
-                        <div class="order-place"><a class="btn btn-primary" href="#">Pagar</a></div>
+                        <div class="order-place"><a class="btn btn-primary disabled" href="#">Pagar</a></div>
                       </div>
                     </div>
                   </div>

@@ -1,3 +1,4 @@
+from .models import CarritoDeCompra
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
 from rest_framework.views import APIView
@@ -14,11 +15,52 @@ class ProductoListaView(TemplateView):
         response = requests.get('https://ws-buenos-aires.herokuapp.com/inventario/')
         productos = response.json()
         context['productos'] = productos
+
+        productos_en_carrito = self.request.user.carritos.all()
+        skus_a_buscar = []
+        for producto in productos_en_carrito:
+            skus_a_buscar.append(producto.sku)
+        lista = list(filter(lambda producto: producto.get("SKU") in skus_a_buscar, productos))
+        total_carrito = 0
+        for product in lista:
+            product["CANTIDADCARRITO"] = productos_en_carrito.get(sku=product.get("SKU")).cantidad
+            product["PRECIOCARRITO"] = product.get("PRECIO") * productos_en_carrito.get(sku=product.get("SKU")).cantidad
+            total_carrito += product["PRECIOCARRITO"]
+        context['total_carrito'] = total_carrito
+        context['carrito'] = lista
+        print("skus", skus_a_buscar)
+        print("carrito", context['carrito'])
+
         return context
 
 
 class FinalizarCompraView(TemplateView):
     template_name = "ventas/finalizar-compra.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        response = requests.get('https://ws-buenos-aires.herokuapp.com/inventario/')
+        productos = response.json()
+        context['productos'] = productos
+
+        productos_en_carrito = self.request.user.carritos.all()
+        skus_a_buscar = []
+        for producto in productos_en_carrito:
+            skus_a_buscar.append(producto.sku)
+        lista = list(filter(lambda producto: producto.get("SKU") in skus_a_buscar, productos))
+        total_carrito = 0
+        for product in lista:
+            product["CANTIDADCARRITO"] = productos_en_carrito.get(sku=product.get("SKU")).cantidad
+            product["PRECIOCARRITO"] = product.get("PRECIO") * productos_en_carrito.get(sku=product.get("SKU")).cantidad
+            total_carrito += product["PRECIOCARRITO"]
+
+        context['carrito'] = lista
+        context['total_carrito'] = total_carrito
+
+        print("skus", skus_a_buscar)
+        print("carrito", context['carrito'])
+
+        return context
 
 
 class ComprobarMedioDePagoView(APIView):
@@ -39,6 +81,23 @@ class ComprobarMedioDePagoView(APIView):
             return Response({"confirmacion": False}, status=404)
 
 
+class AgregarACarritoView(APIView):
+    def post(self, request, format=None):
+        sku = request.data.get("sku")
+        cantidad = int(request.data.get("cantidad"))
+        existe = CarritoDeCompra.objects.filter(sku=sku)
+        creado = None
+        if existe.count() > 0:
+            cantidad_antigua = existe[0].cantidad
+            carro_encontrado = CarritoDeCompra.objects.get(sku=sku)
+            carro_encontrado.cantidad = cantidad_antigua+cantidad
+            carro_encontrado.save()
+        else:
+            CarritoDeCompra.objects.create(sku=sku, cantidad=cantidad, usuario=request.user)
+        return Response({}, status=200)
+
+
 producto_lista_view = ProductoListaView.as_view()
 finalizar_compra_view = FinalizarCompraView.as_view()
 comprobar_medio_de_pago_view = ComprobarMedioDePagoView.as_view()
+agregar_a_carrito_view = AgregarACarritoView.as_view()

@@ -42,9 +42,9 @@ LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    # "default": env.db("DATABASE_URL", default="postgres:///web_buenos_aires"),
-    "default": env.db("DATABASE_URL", default="postgres://urfcrgngitolfl:fa7ab97a351b0c89ca1d1a31dc6782fdc3d960d1c65364d2930f22cfa4bfdddc@ec2-54-197-100-79.compute-1.amazonaws.com:5432/d432g8nivpf40s"),
-
+    "default": env.db("DATABASE_URL", default="postgres://lcorrea-dev:lcorrea-dev@localhost/web_buenos_aires"),
+    # "default": env.db("DATABASE_URL", default="postgres://urfcrgngitolfl:fa7ab97a351b0c89ca1d1a31dc6782fdc3d960d1c65364d2930f22cfa4bfdddc@ec2-54-197-100-79.compute-1.amazonaws.com:5432/d432g8nivpf40s"),
+    #
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
@@ -102,7 +102,7 @@ AUTHENTICATION_BACKENDS = [
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-user-model
 AUTH_USER_MODEL = "users.User"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-redirect-url
-LOGIN_REDIRECT_URL = "ventas/productos/"
+LOGIN_REDIRECT_URL = "/ventas/productos/"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-url
 LOGIN_URL = "account_login"
 
