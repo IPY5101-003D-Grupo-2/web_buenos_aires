@@ -136,13 +136,13 @@
                                 <button class="btn" type="button"><i class="icon-shopping-cart"></i></button>
                               </li>
                               <li>
-                                <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"><i class="icon-eye"></i></button>
+                                <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#modal-{{forloop.counter}}"><i class="icon-eye"></i></button>
                               </li>
                               
                             </ul>
                           </div>
                         </div>
-                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
+                        <div class="modal fade" id="modal-{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="modal-{{forloop.counter}}" aria-hidden="true">
                           <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -163,10 +163,10 @@
 
                 <div class="col-sm-12">
                   <ul class="nav nav-tabs border-tab mb-0" id="top-tab" role="tablist">
-                    <li class="nav-item"><a class="nav-link active" id="top-home-tab" data-bs-toggle="tab" href="#top-home" role="tab" aria-controls="top-home" aria-selected="true" data-bs-original-title="" title="">Características</a>
+                    <li class="nav-item"><a class="nav-link active" id="tab-descripcion-{{forloop.counter}}" data-bs-toggle="tab" href="#tab-descripcion-{{forloop.counter}}-id" role="tab" aria-controls="tab-descripcion-{{forloop.counter}}-id" aria-selected="true" data-bs-original-title="" title="">Características</a>
                       <div class="material-border"></div>
                     </li>
-                    <li class="nav-item"><a class="nav-link" id="profile-top-tab" data-bs-toggle="tab" href="#top-profile" role="tab" aria-controls="top-profile" aria-selected="false" data-bs-original-title="" title="">Detalle técnico</a>
+                    <li class="nav-item"><a class="nav-link" id="tab-detalle-{{forloop.counter}}" data-bs-toggle="tab" href="#tab-detalle-{{forloop.counter}}-id" role="tab" aria-controls="tab-detalle-{{forloop.counter}}" aria-selected="false" data-bs-original-title="" title="">Detalle técnico</a>
                       <div class="material-border"></div>
                     </li>
                     {% comment %} <li class="nav-item"><a class="nav-link" id="contact-top-tab" data-bs-toggle="tab" href="#top-contact" role="tab" aria-controls="top-contact" aria-selected="false" data-bs-original-title="" title="">Details</a>
@@ -177,10 +177,10 @@
                     </li> {% endcomment %}
                   </ul>
                   <div class="tab-content" id="top-tabContent">
-                    <div class="tab-pane fade active show" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
+                    <div class="tab-pane fade active show" id="tab-descripcion-{{forloop.counter}}-id" role="tabpanel" aria-labelledby="tab-descripcion-{{forloop.counter}}">
                       <p class="mb-0 m-t-20">{{ producto.CARACTERISTICAS }}</p>
                     </div>
-                    <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
+                    <div class="tab-pane fade" id="tab-detalle-{{forloop.counter}}-id" role="tabpanel" aria-labelledby="tab-detalle-{{forloop.counter}}">
                       <p class="mb-0 m-t-20"><strong>Modelo:</strong> {{ producto.MODELO }}</p>
                       <p class="mb-0 m-t-20"><strong>Modo de operación:</strong> {{ producto.MODOOPERACION }}</p>
                       <p class="mb-0 m-t-20"><strong>Alimentación eléctrica:</strong> {{ producto.ALIMENTACIONELECTRICA }}</p>
@@ -192,8 +192,7 @@
                       <p class="mb-0 m-t-20"><strong>Peso neto:</strong> {{ producto.PESONETO }}</p>
                       <p class="mb-0 m-t-20"><strong>Modelo kit cañerias:</strong> {{ producto.MODELOKITCAÑERIAS }}</p>
                       <p class="mb-0 m-t-20"><strong>Conexión de cañerias:</strong> {{ producto.CONEXIONDECAÑERIAS }}</p>
-                      <p class="mb-0 m-t-20"><strong>Ficha del producto:</strong> {{ producto.FICHADEPRODUCTO }}</p>
-
+                      <p class="mb-0 m-t-20"><strong>Ficha del producto:</strong> <a href="{{ producto.FICHADEPRODUCTO }}">{{ producto.FICHADEPRODUCTO }} </a></p>
                     </div>
                     {% comment %} <div class="tab-pane fade" id="top-contact" role="tabpanel" aria-labelledby="contact-top-tab">
                       <p class="mb-0 m-t-20">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
