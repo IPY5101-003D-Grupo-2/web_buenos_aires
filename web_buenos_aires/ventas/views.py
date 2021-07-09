@@ -1,3 +1,5 @@
+from django.views.decorators.csrf import csrf_exempt
+from web_buenos_aires.ventas.indicador import Mindicador
 from .models import CarritoDeCompra
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
@@ -5,6 +7,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 import zeep
 import requests
+from datetime import datetime
+from django.urls import reverse
+from transbank.webpay.webpay_plus.transaction import Transaction
+import random
 
 
 class ProductoListaView(TemplateView):
@@ -14,8 +20,10 @@ class ProductoListaView(TemplateView):
         context = super().get_context_data(**kwargs)
         response = requests.get('https://ws-buenos-aires.herokuapp.com/inventario/')
         productos = response.json()
+        context['valor_dolar'] = Mindicador('dolar').valor_actual()
+        for producto_a in productos:
+            producto_a['PRECIO_EN_DOLARES'] = round(producto_a['PRECIO'] / context['valor_dolar'], 2)
         context['productos'] = productos
-
         productos_en_carrito = self.request.user.carritos.all()
         skus_a_buscar = []
         for producto in productos_en_carrito:
@@ -60,6 +68,15 @@ class FinalizarCompraView(TemplateView):
         print("skus", skus_a_buscar)
         print("carrito", context['carrito'])
 
+        amount = total_carrito
+        buy_order = str(random.randrange(1000000, 99999999))
+        session_id = str(self.request.user.id)
+        return_url = 'http://127.0.0.1:8000'+reverse('ventas:transaccion-exitosa')
+
+        response = Transaction.create(buy_order, session_id, amount, return_url)
+        context['url_transbank'] = response.url
+        context['token'] = response.token
+
         return context
 
 
@@ -86,7 +103,6 @@ class AgregarACarritoView(APIView):
         sku = request.data.get("sku")
         cantidad = int(request.data.get("cantidad"))
         existe = CarritoDeCompra.objects.filter(sku=sku)
-        creado = None
         if existe.count() > 0:
             cantidad_antigua = existe[0].cantidad
             carro_encontrado = CarritoDeCompra.objects.get(sku=sku)
@@ -97,7 +113,47 @@ class AgregarACarritoView(APIView):
         return Response({}, status=200)
 
 
+class CrearTransaccion(TemplateView):
+    def post(self, request):
+        print(request.data)
+
+        # return render(request, "ventas/aa.html", context)
+
+
+@csrf_exempt
+def TransaccionExitosa(request):
+    template_name = "ventas/transaccion-exitosa.html"
+    if request.method == 'POST':
+        token = request.POST.get("token_ws")
+        response = Transaction.commit(token=token)
+        context = {
+            "buy_order": response.buy_order,
+            "session_id": response.session_id,
+            "amount": response.amount,
+            "response": response,
+            "token_ws": token,
+            "status": response.status,
+            "fecha_transaccion": response.transaction_date
+        }
+    # else:
+    #     context = {
+    #         "buy_order": "123",
+    #         "session_id": "1",
+    #         "amount": "1231123",
+    #         "response": "response",
+    #         "token_ws": "token",
+    #         "status": "response.status",
+    #         "fecha_transaccion": "response.transaction_date"
+    #     }
+
+    # VISA              4051885600446623
+    #                   CVV 123
+    return render(request, template_name, context)
+
+
 producto_lista_view = ProductoListaView.as_view()
 finalizar_compra_view = FinalizarCompraView.as_view()
 comprobar_medio_de_pago_view = ComprobarMedioDePagoView.as_view()
 agregar_a_carrito_view = AgregarACarritoView.as_view()
+crear_transaccion_view = CrearTransaccion.as_view()
+transaccion_exitosa_view = TransaccionExitosa

@@ -27,7 +27,11 @@
                         <ul class="sub-total total">
                           <li>Total <span class="count">${{ total_carrito }}</span></li>
                         </ul>
-                        <div class="order-place"><a class="btn btn-primary disabled" href="#">Pagar</a></div>
+                        <form method="post" action='{{ url_transbank }}'>
+                          {% csrf_token %}
+                          <input type="hidden" id="token_ws" name="token_ws" value="{{ token }}"/>
+                          <div class="order-place"><button class="btn btn-primary" value="submit" href="#">Pagar</but></div>
+                        </form>
                       </div>
                     </div>
                   </div>

@@ -1,0 +1,120 @@
+{% extends './base.html' %}
+{% load static %}
+{% block titulo_pagina %} Productos {% endblock titulo_pagina %}
+{% block titulo_modulo %} Productos {% endblock titulo_modulo %}
+{% block item_breadcrumb %} Productos {% endblock item_breadcrumb %}
+{% block content %}
+<!-- Container-fluid starts-->
+<div class="card">
+    <div class="card-header">
+    <h5>TRANSACCION EXITOSA</h5>
+    </div>
+    <div class="card-body">
+        <div class="row text-center">
+            <p><strong>Número de pedido:</strong> {{buy_order}}</p>
+            <p><strong>Id:</strong> {{session_id}}</p>
+            <p><strong>Total:</strong> ${{amount}}</p>
+            <p><strong>Status:</strong> {{status}}</p>
+            <p><strong>Fecha de transacción:</strong> {{fecha_transaccion}}</p>
+        
+            {% comment %} <div class="col-xl-6 col-sm-12">
+                <div class="checkout-details card">
+                    <div class="order-box card-header">
+                    <div class="title-box">
+                        <div class="checkbox-title">
+                        <h4>Producto </h4><span>Total</span>
+                        </div>
+                    </div>
+                    <ul class="qty">
+                        {% for producto in carrito %}
+                        <li>{{ producto.SKU }} {{ producto.NOMBRE|truncatechars:35 }} × {{ producto.CANTIDADCARRITO }} <span>${{ producto.PRECIOCARRITO }}</span></li>
+                        {% endfor %}
+                    </ul>
+                    <ul class="sub-total total">
+                        <li>Total <span class="count">${{ total_carrito }}</span></li>
+                    </ul>
+                    <div class="order-place"><a class="btn btn-primary disabled" href="#">Pagar</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Detalles de pago </h5>
+                    </div>
+                    <div class="card-body">
+                        <form class="theme-form e-commerce-form row needs-validation" id="form_verificar_tarjeta" novalidate="">
+                        <img class="col-5 img-fluid" src="{% static '/assets/images/ecommerce/card.png' %}" style="margin: auto; padding-bottom: 16px;" alt="">
+                        <fieldset class="theme-form e-commerce-form row">
+                            <div class="mb-3 col-6">
+                                <input class="form-control" id="full_name" name="full_name" type="text" placeholder="Nombre completo" required>
+                                <p class="help-block">Debe ser igual al de tu tarjeta</p>  
+                            </div>
+                            <div class="mb-3 col-6">
+                                <input class="form-control" id="card_number" name="card_number" type="number" min="1000000000000000" max="9999999999999999" placeholder="Número de tarjeta" required>
+                                <p class="help-block">16 dígitos de tu tarjeta</p>  
+                            </div>
+                            <div class="mb-3 col-6">
+                                <input class="form-control" id="cvv_number" name="cvv_number" type="text" maxlength="3" placeholder="Código de verificación" required>
+                                <p class="help-block">3 dígitos expuestos en tu tarjeta</p>  
+                            </div>
+                            <div class="mb-3 col-6">
+                                <select class="form-select" id="type" name="type" size="1" required>
+                                <option value="">Selecciona el tipo de tarjeta</option>
+                                <option value="VISA">VISA</option>
+                                <option value="MASTERCARD">MASTERCARD</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="col-form-label p-b-20">Fecha de vencimiento</label>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <select class="form-select" id="expiration_month" name="expiration_month" size="1" required>
+                                <option value="">Selecciona un mes</option>
+                                <option value="1">Enero</option>
+                                <option value="2">Fabrero</option>
+                                <option value="3">Marzo</option>
+                                <option value="4">Abril</option>
+                                <option value="5">Mayo</option>
+                                <option value="6">Junio</option>
+                                <option value="7">Julio</option>
+                                <option value="8">Agosto</option>
+                                <option value="9">Septiembre</option>
+                                <option value="10">Octubre</option>
+                                <option value="11">Noviembre</option>
+                                <option value="12">Diciembre</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <select class="form-select" id="expiration_year" name="expiration_year" size="1" required>
+                                <option value="">Selecciona un año</option>
+                                <option value="2020" >2020</option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                                <option value="2028">2028</option>
+                                <option value="2029">2029</option>
+                                <option value="2030">2030</option>
+                                </select>
+                            </div>
+                        </fieldset>
+                        <div class="col-12">
+                            <button class="btn btn-primary btn-block" id="btnConfirmarCompra" type="submit" title="">Verificar medio de pago</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div> {% endcomment %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+{% comment %} <script src="{% static '/js/finalizar-compra.js' %}"></script> {% endcomment %}
+ 
+{% endblock scripts %}
