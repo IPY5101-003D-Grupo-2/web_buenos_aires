@@ -113,13 +113,6 @@ class AgregarACarritoView(APIView):
         return Response({}, status=200)
 
 
-class CrearTransaccion(TemplateView):
-    def post(self, request):
-        print(request.data)
-
-        # return render(request, "ventas/aa.html", context)
-
-
 @csrf_exempt
 def TransaccionExitosa(request):
     template_name = "ventas/transaccion-exitosa.html"
@@ -155,5 +148,4 @@ producto_lista_view = ProductoListaView.as_view()
 finalizar_compra_view = FinalizarCompraView.as_view()
 comprobar_medio_de_pago_view = ComprobarMedioDePagoView.as_view()
 agregar_a_carrito_view = AgregarACarritoView.as_view()
-crear_transaccion_view = CrearTransaccion.as_view()
 transaccion_exitosa_view = TransaccionExitosa
